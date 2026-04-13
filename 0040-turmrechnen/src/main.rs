@@ -18,7 +18,11 @@ fn calculate_result(start: i32) -> [(i32, char, i32, i32); 16] {
 }
 
 fn main() {
-    for (current, op, i, next) in calculate_result(START) {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).expect("Failed to read line");
+    let start_value = input.trim().parse::<i32>().unwrap_or(START);
+    
+    for (current, op, i, next) in calculate_result(start_value) {
         println!("{current:>10} {op} {i} = {next}");
     }
 }
